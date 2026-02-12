@@ -38,12 +38,6 @@ const Index = () => {
         <span className="text-foreground/50 tracking-[0.25em] uppercase text-[10px] font-medium">
           Murphy Street Partners
         </span>
-        <a
-          href={enquireHref}
-          className="text-[10px] tracking-[0.25em] uppercase text-foreground/40 hover:text-foreground/70 transition-colors duration-500 font-medium"
-        >
-          Enquire
-        </a>
       </nav>
 
       {/* Hero text */}
