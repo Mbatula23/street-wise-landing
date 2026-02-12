@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import heroVideo from "@/assets/hero-video.mp4";
+import MSPLogo from "@/components/MSPLogo";
 const straplines = [
   "Strategic Sports Advisory",
   "Trusted by Industry Leaders",
@@ -34,14 +35,7 @@ const Index = () => {
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 sm:px-16 lg:px-24 py-8">
         <div className="flex items-center gap-4">
-          <div className="w-9 h-9 border border-foreground/20 flex items-center justify-center">
-            <span
-              className="text-foreground/80 text-sm font-medium tracking-wide"
-              style={{ fontFamily: "var(--font-serif)" }}
-            >
-              MS
-            </span>
-          </div>
+          <MSPLogo size={38} className="text-foreground" />
           <span className="hidden sm:block text-foreground/50 tracking-[0.25em] uppercase text-[10px] font-medium">
             Murphy Street Partners
           </span>
