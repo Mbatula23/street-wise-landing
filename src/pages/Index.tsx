@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import heroVideo from "@/assets/hero-video.mp4";
 const straplines = [
   "Strategic Sports Advisory",
   "Trusted by Industry Leaders",
@@ -86,6 +86,18 @@ const Index = () => {
           >
             Enquire
           </a>
+
+          {/* Cinematic video loop */}
+          <div className="mt-20 w-full max-w-3xl mx-auto overflow-hidden">
+            <video
+              src={heroVideo}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-auto opacity-60"
+            />
+          </div>
         </div>
       </main>
 
