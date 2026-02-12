@@ -32,7 +32,7 @@ const MSPLogo = ({ size = 36, className = "" }: { size?: number; className?: str
       <text
         x="16"
         y="64"
-        fontFamily="'Playfair Display', Georgia, serif"
+        fontFamily="'Cormorant', Georgia, serif"
         fontSize="30"
         fontWeight="400"
         fill="currentColor"
@@ -44,7 +44,7 @@ const MSPLogo = ({ size = 36, className = "" }: { size?: number; className?: str
       <text
         x="38"
         y="64"
-        fontFamily="'Playfair Display', Georgia, serif"
+        fontFamily="'Cormorant', Georgia, serif"
         fontSize="30"
         fontWeight="400"
         fill="currentColor"
@@ -56,7 +56,7 @@ const MSPLogo = ({ size = 36, className = "" }: { size?: number; className?: str
       <text
         x="58"
         y="64"
-        fontFamily="'Playfair Display', Georgia, serif"
+        fontFamily="'Cormorant', Georgia, serif"
         fontSize="30"
         fontWeight="400"
         fill="currentColor"
