@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import heroVideo from "@/assets/hero-video.mp4";
+import londonVideo from "@/assets/london-video.mp4";
 import MSPLogo from "@/components/MSPLogo";
+
 const straplines = [
   "Strategic Sports Advisory",
   "Trusted by Industry Leaders",
@@ -35,7 +36,7 @@ const Index = () => {
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 sm:px-16 lg:px-24 py-8">
         <div className="flex items-center gap-4">
-          <MSPLogo size={38} className="text-foreground" />
+          <MSPLogo size={36} className="text-foreground" />
           <span className="hidden sm:block text-foreground/50 tracking-[0.25em] uppercase text-[10px] font-medium">
             Murphy Street Partners
           </span>
@@ -48,24 +49,22 @@ const Index = () => {
         </a>
       </nav>
 
-      {/* Hero */}
-      <main className="flex-1 flex items-center justify-center">
+      {/* Hero text */}
+      <main className="pt-40 sm:pt-48 pb-16 flex-shrink-0">
         <div
           className={`text-center px-6 transition-all duration-[1.6s] ease-out ${
             visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
           <h1
-            className="text-[clamp(2.4rem,5.5vw,5rem)] font-normal tracking-[0.02em] text-foreground leading-[1.15]"
+            className="text-[clamp(2.2rem,5vw,4.5rem)] font-normal tracking-[0.02em] text-foreground leading-[1.15]"
             style={{ fontFamily: "var(--font-serif)" }}
           >
             Murphy Street Partners
           </h1>
 
-          {/* Divider */}
-          <div className="mx-auto my-10 w-16 h-px bg-foreground/20" />
+          <div className="mx-auto my-8 w-16 h-px bg-foreground/20" />
 
-          {/* Rotating strapline */}
           <p
             className={`text-[10px] sm:text-[11px] tracking-[0.4em] uppercase text-muted-foreground font-light h-5 transition-all duration-500 ease-in-out ${
               lineVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
@@ -76,24 +75,29 @@ const Index = () => {
 
           <a
             href={enquireHref}
-            className="inline-block mt-16 px-12 py-4 border border-foreground/15 text-foreground/50 text-[10px] tracking-[0.3em] uppercase font-medium hover:border-foreground/40 hover:text-foreground/80 transition-all duration-500"
+            className="inline-block mt-12 px-12 py-4 border border-foreground/15 text-foreground/50 text-[10px] tracking-[0.3em] uppercase font-medium hover:border-foreground/40 hover:text-foreground/80 transition-all duration-500"
           >
             Enquire
           </a>
-
-          {/* Cinematic video loop */}
-          <div className="mt-20 w-full max-w-3xl mx-auto overflow-hidden">
-            <video
-              src={heroVideo}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-auto opacity-60"
-            />
-          </div>
         </div>
       </main>
+
+      {/* London cinematic video strip */}
+      <div
+        className={`flex-1 min-h-[30vh] relative overflow-hidden transition-opacity duration-[2s] delay-500 ${
+          visible ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <video
+          src={londonVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-50"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
+      </div>
 
       {/* Footer */}
       <footer
