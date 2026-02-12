@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import londonVideo from "@/assets/london-video.mp4";
-import MSPLogo from "@/components/MSPLogo";
+
 
 const straplines = [
   "Strategic Sports Advisory",
@@ -35,12 +35,9 @@ const Index = () => {
     <div className="min-h-screen flex flex-col bg-background text-foreground">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 sm:px-16 lg:px-24 py-8">
-        <div className="flex items-center gap-4">
-          <MSPLogo size={36} className="text-foreground" />
-          <span className="hidden sm:block text-foreground/50 tracking-[0.25em] uppercase text-[10px] font-medium">
-            Murphy Street Partners
-          </span>
-        </div>
+        <span className="text-foreground/50 tracking-[0.25em] uppercase text-[10px] font-medium">
+          Murphy Street Partners
+        </span>
         <a
           href={enquireHref}
           className="text-[10px] tracking-[0.25em] uppercase text-foreground/40 hover:text-foreground/70 transition-colors duration-500 font-medium"
