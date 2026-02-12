@@ -1,32 +1,38 @@
 import { useEffect, useState } from "react";
-import heroBg from "@/assets/hero-bg.jpg";
+
+const straplines = [
+  "Strategic Sports Advisory",
+  "Trusted by Industry Leaders",
+  "Precision. Discretion. Results.",
+];
 
 const Index = () => {
   const [visible, setVisible] = useState(false);
+  const [currentLine, setCurrentLine] = useState(0);
+  const [lineVisible, setLineVisible] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => setVisible(true), 200);
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLineVisible(false);
+      setTimeout(() => {
+        setCurrentLine((prev) => (prev + 1) % straplines.length);
+        setLineVisible(true);
+      }, 600);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
   const enquireHref = "mailto:contact@murphy-street.com?subject=Enquiry";
 
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground relative overflow-hidden">
-      {/* Fluid hero background */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src={heroBg}
-          alt=""
-          className="w-full h-full object-cover"
-          style={{ animation: "slow-drift 30s ease-in-out infinite" }}
-        />
-        <div className="absolute inset-0 bg-background/60" />
-      </div>
-
+    <div className="min-h-screen flex flex-col bg-background text-foreground">
       {/* Navigation */}
-      <nav className="relative z-10 flex items-center justify-between px-8 sm:px-16 lg:px-24 py-8">
-        {/* Monogram Logo */}
+      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 sm:px-16 lg:px-24 py-8">
         <div className="flex items-center gap-4">
           <div className="w-9 h-9 border border-foreground/20 flex items-center justify-center">
             <span
@@ -49,7 +55,7 @@ const Index = () => {
       </nav>
 
       {/* Hero */}
-      <main className="relative z-10 flex-1 flex items-center justify-center">
+      <main className="flex-1 flex items-center justify-center">
         <div
           className={`text-center px-6 transition-all duration-[1.6s] ease-out ${
             visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
@@ -65,8 +71,13 @@ const Index = () => {
           {/* Divider */}
           <div className="mx-auto my-10 w-16 h-px bg-foreground/20" />
 
-          <p className="text-[10px] sm:text-[11px] tracking-[0.4em] uppercase text-muted-foreground font-light">
-            Strategic Sports Advisory
+          {/* Rotating strapline */}
+          <p
+            className={`text-[10px] sm:text-[11px] tracking-[0.4em] uppercase text-muted-foreground font-light h-5 transition-all duration-500 ease-in-out ${
+              lineVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+            }`}
+          >
+            {straplines[currentLine]}
           </p>
 
           <a
@@ -80,7 +91,7 @@ const Index = () => {
 
       {/* Footer */}
       <footer
-        className={`relative z-10 px-8 sm:px-16 lg:px-24 py-8 transition-all duration-[1.6s] delay-700 ${
+        className={`px-8 sm:px-16 lg:px-24 py-8 transition-all duration-[1.6s] delay-700 ${
           visible ? "opacity-100" : "opacity-0"
         }`}
       >
