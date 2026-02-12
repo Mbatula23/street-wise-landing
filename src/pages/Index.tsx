@@ -34,10 +34,13 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center px-4 sm:px-8 lg:px-12 py-8">
+      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-8 lg:px-12 py-8">
         <span className="text-foreground/50 tracking-[0.25em] uppercase text-[10px] font-medium">
           Murphy Street Partners
         </span>
+        <button className="text-[10px] tracking-[0.25em] uppercase text-foreground/40 hover:text-foreground/70 transition-colors duration-500 font-medium">
+          Client Login
+        </button>
       </nav>
 
       {/* Hero text */}
