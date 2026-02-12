@@ -8,38 +8,23 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isSignUp, setIsSignUp] = useState(false);
+  
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [message, setMessage] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
-    setMessage(null);
 
-    if (isSignUp) {
-      const { error } = await supabase.auth.signUp({
-        email,
-        password,
-        options: { emailRedirectTo: window.location.origin },
-      });
-      if (error) {
-        setError(error.message);
-      } else {
-        setMessage("Please check your email to confirm your account.");
-      }
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+    if (error) {
+      setError(error.message);
     } else {
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-      if (error) {
-        setError(error.message);
-      } else {
-        navigate("/");
-      }
+      navigate("/");
     }
     setLoading(false);
   };
@@ -62,7 +47,7 @@ const Login = () => {
             className="text-[clamp(1.6rem,3vw,2.4rem)] font-normal tracking-[0.02em] text-foreground leading-[1.15] text-center mb-2"
             style={{ fontFamily: "var(--font-serif)" }}
           >
-            {isSignUp ? "Create Account" : "Client Login"}
+            Client Login
           </h1>
 
           <div className="mx-auto my-6 w-12 h-px bg-foreground/20" />
@@ -111,37 +96,16 @@ const Login = () => {
               </p>
             )}
 
-            {message && (
-              <p className="text-primary text-[11px] tracking-wide">
-                {message}
-              </p>
-            )}
 
             <button
               type="submit"
               disabled={loading}
               className="w-full py-4 border border-foreground/15 text-foreground/50 text-[10px] tracking-[0.3em] uppercase font-medium hover:border-foreground/40 hover:text-foreground/80 transition-all duration-500 disabled:opacity-30"
             >
-              {loading
-                ? "Please wait..."
-                : isSignUp
-                ? "Create Account"
-                : "Sign In"}
+              {loading ? "Please wait..." : "Sign In"}
             </button>
           </form>
 
-          <button
-            onClick={() => {
-              setIsSignUp(!isSignUp);
-              setError(null);
-              setMessage(null);
-            }}
-            className="mt-8 w-full text-center text-[10px] tracking-[0.25em] uppercase text-foreground/25 hover:text-foreground/50 transition-colors duration-500"
-          >
-            {isSignUp
-              ? "Already have an account? Sign in"
-              : "Need an account? Create one"}
-          </button>
         </div>
       </main>
     </div>
