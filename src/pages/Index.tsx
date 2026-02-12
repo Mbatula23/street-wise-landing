@@ -59,9 +59,7 @@ const Index = () => {
             className="text-[clamp(2.4rem,5.5vw,5rem)] font-normal tracking-[0.02em] text-foreground leading-[1.15]"
             style={{ fontFamily: "var(--font-serif)" }}
           >
-            Murphy Street
-            <br />
-            Partners
+            Murphy Street Partners
           </h1>
 
           {/* Divider */}
