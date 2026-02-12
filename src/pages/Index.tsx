@@ -80,12 +80,28 @@ const Index = () => {
         }`}
       >
         <video
+          ref={(el) => {
+            if (!el) return;
+            const fadeOut = () => {
+              const timeLeft = el.duration - el.currentTime;
+              if (timeLeft < 1.5) {
+                el.style.opacity = String(0.5 * (timeLeft / 1.5));
+              } else if (el.currentTime < 1.5) {
+                el.style.opacity = String(0.5 * (el.currentTime / 1.5));
+              } else {
+                el.style.opacity = "0.5";
+              }
+              requestAnimationFrame(fadeOut);
+            };
+            el.addEventListener("playing", () => requestAnimationFrame(fadeOut));
+          }}
           src={londonVideo}
           autoPlay
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-50"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ opacity: 0 }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
       </div>
