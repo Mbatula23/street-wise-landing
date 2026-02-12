@@ -1,42 +1,62 @@
 import { useEffect, useState } from "react";
+import heroBg from "@/assets/hero-bg.jpg";
 
 const Index = () => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setVisible(true), 150);
+    const timer = setTimeout(() => setVisible(true), 200);
     return () => clearTimeout(timer);
   }, []);
 
   const enquireHref = "mailto:contact@murphy-street.com?subject=Enquiry";
 
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground">
+    <div className="min-h-screen flex flex-col bg-background text-foreground relative overflow-hidden">
+      {/* Fluid hero background */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src={heroBg}
+          alt=""
+          className="w-full h-full object-cover"
+          style={{ animation: "slow-drift 30s ease-in-out infinite" }}
+        />
+        <div className="absolute inset-0 bg-background/60" />
+      </div>
+
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 sm:px-16 py-6">
-        <span
-          className="text-foreground/80 tracking-[0.3em] uppercase text-[11px] font-medium"
-          style={{ fontFamily: "var(--font-sans)" }}
-        >
-          Murphy Street Partners
-        </span>
+      <nav className="relative z-10 flex items-center justify-between px-8 sm:px-16 lg:px-24 py-8">
+        {/* Monogram Logo */}
+        <div className="flex items-center gap-4">
+          <div className="w-9 h-9 border border-foreground/20 flex items-center justify-center">
+            <span
+              className="text-foreground/80 text-sm font-medium tracking-wide"
+              style={{ fontFamily: "var(--font-serif)" }}
+            >
+              MS
+            </span>
+          </div>
+          <span className="hidden sm:block text-foreground/50 tracking-[0.25em] uppercase text-[10px] font-medium">
+            Murphy Street Partners
+          </span>
+        </div>
         <a
           href={enquireHref}
-          className="text-[11px] tracking-[0.2em] uppercase text-foreground/40 hover:text-foreground/80 transition-colors duration-500"
+          className="text-[10px] tracking-[0.25em] uppercase text-foreground/40 hover:text-foreground/70 transition-colors duration-500 font-medium"
         >
           Enquire
         </a>
       </nav>
 
       {/* Hero */}
-      <main className="flex-1 flex items-center justify-center">
+      <main className="relative z-10 flex-1 flex items-center justify-center">
         <div
-          className={`text-center px-6 transition-all duration-[1.4s] ease-out ${
-            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
+          className={`text-center px-6 transition-all duration-[1.6s] ease-out ${
+            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
           <h1
-            className="text-[clamp(2.2rem,6vw,5.5rem)] font-light tracking-[0.04em] text-foreground/90 leading-[1.1]"
+            className="text-[clamp(2.4rem,5.5vw,5rem)] font-normal tracking-[0.02em] text-foreground leading-[1.15]"
             style={{ fontFamily: "var(--font-serif)" }}
           >
             Murphy Street
@@ -44,16 +64,16 @@ const Index = () => {
             Partners
           </h1>
 
-          {/* Subtle divider */}
-          <div className="mx-auto my-8 sm:my-10 w-12 h-px bg-foreground/15" />
+          {/* Divider */}
+          <div className="mx-auto my-10 w-16 h-px bg-foreground/20" />
 
-          <p className="text-[11px] sm:text-xs tracking-[0.35em] uppercase text-muted-foreground font-light">
+          <p className="text-[10px] sm:text-[11px] tracking-[0.4em] uppercase text-muted-foreground font-light">
             Strategic Sports Advisory
           </p>
 
           <a
             href={enquireHref}
-            className="inline-block mt-14 sm:mt-18 px-10 py-3.5 border border-foreground/12 text-foreground/50 text-[10px] tracking-[0.3em] uppercase hover:border-foreground/30 hover:text-foreground/80 transition-all duration-500"
+            className="inline-block mt-16 px-12 py-4 border border-foreground/15 text-foreground/50 text-[10px] tracking-[0.3em] uppercase font-medium hover:border-foreground/40 hover:text-foreground/80 transition-all duration-500"
           >
             Enquire
           </a>
@@ -62,11 +82,11 @@ const Index = () => {
 
       {/* Footer */}
       <footer
-        className={`px-8 sm:px-16 py-8 transition-all duration-[1.4s] delay-500 ${
+        className={`relative z-10 px-8 sm:px-16 lg:px-24 py-8 transition-all duration-[1.6s] delay-700 ${
           visible ? "opacity-100" : "opacity-0"
         }`}
       >
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] text-foreground/25 tracking-[0.15em]">
+        <div className="border-t border-foreground/8 pt-8 max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-[9px] text-foreground/25 tracking-[0.18em] uppercase">
           <p>19 Grosvenor Gardens, Belgravia, London, SW1W 0BD</p>
           <div className="flex items-center gap-8">
             <span>© {new Date().getFullYear()} Murphy Street Partners</span>
