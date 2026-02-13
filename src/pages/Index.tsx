@@ -4,7 +4,7 @@ import londonVideo from "@/assets/london-video.mp4";
 
 const straplines = [
   "Strategic Sports Advisory",
-  "Trusted by Industry Leaders",
+  "Trusted by the World's Leading Family Offices",
   "Precision. Discretion. Results.",
 ];
 
