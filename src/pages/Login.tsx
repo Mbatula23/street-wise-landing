@@ -100,12 +100,20 @@ const Login = () => {
                 id="password"
                 type="password"
                 required
-                minLength={6}
+                minLength={12}
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  setPasswordError(null);
+                }}
                 className="bg-transparent border-foreground/15 text-foreground/80 text-[7px] tracking-[0.3em] uppercase font-medium placeholder:text-foreground/20 placeholder:tracking-[0.3em] focus:border-foreground/40 transition-colors duration-500"
-                placeholder="••••••••"
+                placeholder="••••••••••••"
               />
+              {passwordError && (
+                <p className="text-destructive text-[11px] tracking-wide mt-1">
+                  {passwordError}
+                </p>
+              )}
             </div>
 
             {error && (
