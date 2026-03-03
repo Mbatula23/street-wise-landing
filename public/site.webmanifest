@@ -3,7 +3,12 @@
   "short_name": "MSP",
   "icons": [
     {
-      "src": "/favicon.svg",
+      "src": "/favicon-msp.png?v=1",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-msp.svg?v=1",
       "sizes": "any",
       "type": "image/svg+xml"
     }
