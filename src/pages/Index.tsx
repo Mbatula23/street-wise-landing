@@ -3,9 +3,8 @@ import londonVideo from "@/assets/london-video.mp4";
 
 
 const straplines = [
-  "Strategic Sports Advisory",
-  "Trusted by the World's Leading Family Offices",
-  "Precision. Discretion. Results.",
+  "Global Sport. Institutional Capital.",
+  "Partnering with the World's Leading Family Offices",
 ];
 
 const Index = () => {
