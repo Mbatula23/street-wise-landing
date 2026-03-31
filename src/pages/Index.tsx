@@ -117,8 +117,8 @@ const Index = () => {
         <div className="border-t border-foreground/8 pt-8 max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-[9px] text-foreground/25 tracking-[0.18em] uppercase">
           <p>19 Grosvenor Gardens, Belgravia, London, SW1W 0BD</p>
           <div className="flex items-center gap-8">
-            <span>© 2024 Murphy Street Partners</span>
-            <a href="#" className="hover:text-foreground/50 transition-colors duration-500">
+            <span>© 2026 Murphy Street Partners</span>
+            <a href="/privacy-policy" className="hover:text-foreground/50 transition-colors duration-500">
               Privacy Policy
             </a>
           </div>
