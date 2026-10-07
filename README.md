@@ -13,7 +13,7 @@ npm run build      # output in dist/
 
 ## Deployment
 
-Every push to `main` runs `.github/workflows/deploy.yml`, which builds the site and publishes `dist/` to GitHub Pages. The custom domain is set by `public/CNAME`.
+Every push to `main` runs `.github/workflows/deploy.yml`, which builds the site and publishes `dist/` to GitHub Pages. The custom domain (`murphy-street.com`) is configured in the repository's **Settings → Pages**; `public/CNAME` mirrors it for reference but is not what binds the domain when deploying via Actions.
 
 DNS (at the domain registrar) must point at GitHub Pages:
 
