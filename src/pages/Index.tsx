@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import londonVideo from "@/assets/london-video.mp4";
 
 
 const straplines = [
@@ -97,14 +96,17 @@ const Index = () => {
             };
             el.addEventListener("playing", () => requestAnimationFrame(fadeOut));
           }}
-          src={londonVideo}
+          poster="/media/london-poster.jpg"
           autoPlay
           loop
           muted
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
-          style={{ opacity: 0 }}
-        />
+          style={{ opacity: 0.5 }}
+        >
+          <source src="/media/london.webm" type="video/webm" />
+          <source src="/media/london.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
       </div>
 
