@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 
 const straplines = [
@@ -10,6 +10,34 @@ const Index = () => {
   const [visible, setVisible] = useState(false);
   const [currentLine, setCurrentLine] = useState(0);
   const [lineVisible, setLineVisible] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // One fade loop for the life of the video, cancelled on unmount.
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el) return;
+    let frame = 0;
+    const fadeOut = () => {
+      const timeLeft = el.duration - el.currentTime;
+      if (timeLeft < 1.5) {
+        el.style.opacity = String(0.5 * (timeLeft / 1.5));
+      } else if (el.currentTime < 1.5) {
+        el.style.opacity = String(0.5 * (el.currentTime / 1.5));
+      } else {
+        el.style.opacity = "0.5";
+      }
+      frame = requestAnimationFrame(fadeOut);
+    };
+    const onPlaying = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(fadeOut);
+    };
+    el.addEventListener("playing", onPlaying);
+    return () => {
+      el.removeEventListener("playing", onPlaying);
+      cancelAnimationFrame(frame);
+    };
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => setVisible(true), 200);
@@ -81,21 +109,7 @@ const Index = () => {
         }`}
       >
         <video
-          ref={(el) => {
-            if (!el) return;
-            const fadeOut = () => {
-              const timeLeft = el.duration - el.currentTime;
-              if (timeLeft < 1.5) {
-                el.style.opacity = String(0.5 * (timeLeft / 1.5));
-              } else if (el.currentTime < 1.5) {
-                el.style.opacity = String(0.5 * (el.currentTime / 1.5));
-              } else {
-                el.style.opacity = "0.5";
-              }
-              requestAnimationFrame(fadeOut);
-            };
-            el.addEventListener("playing", () => requestAnimationFrame(fadeOut));
-          }}
+          ref={videoRef}
           poster="/media/london-poster.jpg"
           autoPlay
           loop
@@ -117,9 +131,9 @@ const Index = () => {
         }`}
       >
         <div className="border-t border-foreground/8 pt-8 max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-[9px] text-foreground/25 tracking-[0.18em] uppercase">
-          <p>19 Grosvenor Gardens, Belgravia, London, SW1W 0BD</p>
+          <p>Murphy Street Partners Limited · Registered in England &amp; Wales No. 15983851 · Registered office: No. 2, 19 Grosvenor Gardens, Belgravia, London SW1W 0BD</p>
           <div className="flex items-center gap-8">
-            <span>© 2026 Murphy Street Partners</span>
+            <span>© 2026 Murphy Street Partners Limited</span>
             <a href="/privacy-policy" className="hover:text-foreground/50 transition-colors duration-500">
               Privacy Policy
             </a>
